@@ -1,5 +1,5 @@
 import { motion } from "motion/react";
-import { Volume2 } from "lucide-react";
+import { Volume2, FileText } from "lucide-react";
 import { useRef } from "react";
 
 export default function Hero() {
@@ -7,28 +7,16 @@ export default function Hero() {
 
   const playIntro = () => {
     if (!audioRef.current) {
-      audioRef.current = new Audio('./welcomeToPortfolio.mp3');
+      // Updated with the correct folder path for GitHub Pages
+      audioRef.current = new Audio('/yassir-portfolio/welcomeToPortfolio.mp3');
     }
     
     audioRef.current.play().catch(error => {
       console.error("Audio playback failed:", error.message || error);
-      if (error.name === 'NotAllowedError') {
-        console.warn("Autoplay blocked: User interaction required.");
-      } else if (error.name === 'NotFoundError') {
-        console.error("Audio file not found at ./welcomeToPortfolio.mp3");
-      }
     });
   };
 
   return (
-    <a 
-  href="/yassir-portfolio/CV Yassir 1 copy.pdf" 
-  target="_blank" 
-  rel="noopener noreferrer"
-  className="px-4 py-2 bg-white text-black rounded-full font-bold hover:bg-gray-200 transition"
->
-  Download CV
-</a>
     <section className="h-screen flex flex-col justify-center px-6 md:px-24">
       <motion.h2 
         initial={{ opacity: 0, y: 20 }}
@@ -63,6 +51,7 @@ export default function Hero() {
         transition={{ delay: 0.8 }}
         className="mt-10 md:mt-12 flex flex-wrap gap-4 sm:gap-6"
       >
+        {/* Play Intro Button */}
         <button 
           onClick={playIntro}
           className="flex items-center gap-2 px-8 py-3 border-[0.5px] border-white/30 backdrop-blur-sm hover:bg-white/10 transition-all duration-300 text-xs md:text-sm uppercase tracking-widest text-center animate-pulse-border"
@@ -70,12 +59,27 @@ export default function Hero() {
           <Volume2 size={16} />
           Play Intro
         </button>
+
+        {/* New Download CV Button */}
+        <a 
+          href="/yassir-portfolio/CV Yassir 1 copy.pdf" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          className="flex items-center gap-2 px-8 py-3 border border-white/30 bg-white/5 hover:bg-white hover:text-black transition duration-300 text-xs md:text-sm uppercase tracking-widest text-center"
+        >
+          <FileText size={16} />
+          Download CV
+        </a>
+
+        {/* View Work Link */}
         <a 
           href="#work" 
-          className="px-8 py-3 border border-white hover:bg-white hover:text-black transition duration-300 text-xs md:text-sm uppercase tracking-widest text-center"
+          className="px-8 py-3 border border-white/10 hover:border-white transition duration-300 text-xs md:text-sm uppercase tracking-widest text-center"
         >
           View Work
         </a>
+
+        {/* LinkedIn Link */}
         <a 
           href="https://www.linkedin.com/in/yassir-benhaddi-79929a216/" 
           target="_blank" 
