@@ -21,6 +21,14 @@ export default function Hero() {
   };
 
   return (
+    <a 
+  href="/yassir-portfolio/CV Yassir 1 copy.pdf" 
+  target="_blank" 
+  rel="noopener noreferrer"
+  className="px-4 py-2 bg-white text-black rounded-full font-bold hover:bg-gray-200 transition"
+>
+  Download CV
+</a>
     <section className="h-screen flex flex-col justify-center px-6 md:px-24">
       <motion.h2 
         initial={{ opacity: 0, y: 20 }}
